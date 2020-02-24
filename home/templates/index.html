@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My Hat Gone</title>
-</head>
-<body>
-    <h1>This is a Django webpage!</h1>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <p class="alert alert-danger">This is a test!</p>
+    </div>
+{% endblock %}
