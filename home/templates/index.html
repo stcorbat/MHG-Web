@@ -1,7 +1,21 @@
 {% extends "base.html" %}
 
+{% load static %}
+{% block styles %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+{% endblock %}
+
 {% block content %}
     <div class="container">
-        <p class="alert alert-danger">This is a test!</p>
+        <div id="title">My Hat Gone</div>
+        <div id="subtitle">Scott Corbat, Noah Harris, Adam Krueger, Charles Vidro, Pablo Delgado</div>
+        <hr>
+        <p>
+            Our project is a highly configurable JSON editor catered towards Minecraft sound definition files.
+            <br>
+            The application is free for download!
+        </p>
+        <a href="" class="grad-button" id="download-button">Download</a>
     </div>
 {% endblock %}
