@@ -1,13 +1,8 @@
-body, .container {
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
     vertical-align: center;
-}
-
-a, a:hover {
-    text-decoration: none;
-    color: inherit;
 }
 
 #login-button {

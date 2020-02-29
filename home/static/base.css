@@ -8,6 +8,15 @@ html, body {
     color: white;
 }
 
+hr {
+    border-top: 1px solid white;
+}
+
+a.grad-button, a.grad-button:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
 .grad-button {
     margin: 2em;
     font-size: 2.5em;
@@ -23,5 +32,17 @@ html, body {
 
 .container {
     margin: 2em;
-    padding: 2em;
+}
+
+.container-fluid {
+    margin: 2em;
+}
+
+.page-title {
+    font-size: 5em;
+}
+
+.page-desc {
+    font-size: 2.5em;
+    margin-bottom: 2em;
 }

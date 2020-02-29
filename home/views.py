@@ -7,3 +7,7 @@ def index(request):
 
 def login(request):
     return render(request, 'login.html', context={})
+
+
+def about(request):
+    return render(request, 'about.html', context={})
