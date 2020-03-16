@@ -35,7 +35,8 @@ a.grad-button, a.grad-button:hover {
 }
 
 .container-fluid {
-    margin: 2em;
+    padding: 1.5em;
+    margin: auto;
 }
 
 .page-title {

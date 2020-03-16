@@ -9,6 +9,6 @@
 {% block content %}
 <div class="container">
     <h1>Use Google OAuth to login</h1>
-    <a href="" class="grad-button" id="login-button">Login!</a>
+    <a href="{% url 'social:begin' 'google-oauth2' %}" class="grad-button" id="login-button">Login!</a>
 </div>
 {% endblock %}
