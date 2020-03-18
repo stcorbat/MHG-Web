@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block styles %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'about.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="page-title">About</div>
+    <hr>
+    <p class="page-desc">
+        This JSON editor application is created using Java and JavaFX.  The webapp uses the Django web framework with
+        both Bootstrap and custom CSS styling.
+        <br>
+        Our code is open source and can be found on our GitHub repos.
+    </p>
+
+    <a href="https://github.com/cjvidro/MHG" class="grad-button" id="app-git">
+        JSON Editor
+        <img src="{% static 'github-light.png' %}" alt="">
+    </a>
+    <a href="https://github.com/stcorbat/MHG-Web" class="grad-button" id="webapp-git">
+        Webapp
+        <img src="{% static 'github-light.png' %}" alt="">
+    </a>
+</div>
+{% endblock %}

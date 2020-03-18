@@ -1,0 +1,11 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    vertical-align: center;
+}
+
+#login-button {
+    background-image: linear-gradient(60deg, #55efc4, #74b9ff, #55efc4);
+    transition: 0.5s;
+}

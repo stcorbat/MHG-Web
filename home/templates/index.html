@@ -1,10 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My Hat Gone</title>
-</head>
-<body>
-    <h1>This is a Django webpage!</h1>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% load static %}
+{% block styles %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="page-title">My Hat Gone</div>
+        <div id="subtitle">Scott Corbat, Noah Harris, Adam Krueger, Charles Vidro, Pablo Delgado</div>
+        <hr>
+        <p class="page-desc">
+            Our project is a highly configurable JSON editor catered towards Minecraft sound definition files.
+            <br>
+            The application is free for download!
+        </p>
+        <a href="" class="grad-button" id="download-button">Download</a>
+    </div>
+{% endblock %}

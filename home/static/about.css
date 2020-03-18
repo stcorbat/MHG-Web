@@ -1,0 +1,15 @@
+.container a img {
+    padding-left: 0.4em;
+}
+
+p {
+    width: 60%;
+}
+
+#app-git {
+    background-image: linear-gradient(60deg, #0abde3, #10ac84, #0abde3);
+}
+
+#webapp-git {
+    background-image: linear-gradient(60deg, #f368e0, #ff9ff3, #f368e0);
+}

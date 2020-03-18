@@ -1,0 +1,49 @@
+* {
+    font-family: 'Dosis';
+}
+
+html, body {
+    background-color: #34495e;
+    background-size: cover;
+    color: white;
+}
+
+hr {
+    border-top: 1px solid white;
+}
+
+a.grad-button, a.grad-button:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.grad-button {
+    margin: 2em;
+    font-size: 2.5em;
+    padding: 1em 2.5em;
+    border-radius: 3.5em;
+    background-size: 200%;
+    transition: 0.5s;
+}
+
+.grad-button:hover {
+    background-position: right;
+}
+
+.container {
+    margin: 2em;
+}
+
+.container-fluid {
+    padding: 1.5em;
+    margin: auto;
+}
+
+.page-title {
+    font-size: 5em;
+}
+
+.page-desc {
+    font-size: 2.5em;
+    margin-bottom: 2em;
+}
