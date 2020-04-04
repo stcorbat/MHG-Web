@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>View Changelogs</h1>
+    {% if changelogs %}
+        <ul class="list-group">
+            {% for file in changelogs %}
+                <li class="list-group-item">{{ file.filename }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h1>No files found!</h1>
+    {% endif %}
+
+    <hr>
+
+    <h2>Upload File</h2>
+    <!-- the enctype must be set to this in order for request.FILES to be populated -->
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="custom-file" style="margin-bottom: 15px;">
+            <input type="file" name="file" class="custom-file-input" id="changelog-file-input">
+            <label for="changelog-file-input" class="custom-file-label">Choose file</label>
+        </div>
+        <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
+
+</div>
+
+
+<!-- This is a small JS function to change the label of the file input when a file is selected
+    Taken from: https://stackoverflow.com/questions/48613992/bootstrap-4-file-input-doesnt-show-the-file-name
+ -->
+<script>
+    $('#changelog-file-input').on('change', function() {
+        var fileName = $(this).val().replace('C:\\fakepath\\', "");
+        $(this).next('.custom-file-label').html(fileName);
+    })
+</script>
+{% endblock %}
