@@ -14,3 +14,6 @@ class Changelog(models.Model):
 class SoundDef(models.Model):
     userid = models.IntegerField()
     file = models.FileField(upload_to='sound_defs/')
+
+    def filename(self):
+        return os.path.basename(self.file.name)

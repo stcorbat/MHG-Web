@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
-from .models import Changelog
-from .forms import ChangelogForm
+from .models import Changelog, SoundDef
+from .forms import ChangelogForm, SoundDefForm
 
 
 def index(request):
@@ -35,3 +35,23 @@ def view_changelogs(request):
         'form': form
     }
     return render(request, 'view_changelogs.html', context=context)
+
+
+@login_required
+def view_sounddefs(request):
+    if request.method == 'POST':
+        form = SoundDefForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            soundDef = form.save(commit=False)
+            soundDef.userid = request.user.id
+            soundDef.save()
+
+    else:
+        form = SoundDefForm()
+
+    context = {
+        'sounddefs': SoundDef.objects.filter(userid=request.user.id),
+        'form': form
+    }
+    return render(request, 'view_sounddefs.html', context=context)

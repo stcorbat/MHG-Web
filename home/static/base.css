@@ -18,7 +18,8 @@ a.grad-button, a.grad-button:hover {
 }
 
 .grad-button {
-    margin: 2em;
+    display: inline-block;
+    margin: 0.5em;
     font-size: 2.5em;
     padding: 1em 2.5em;
     border-radius: 3.5em;
