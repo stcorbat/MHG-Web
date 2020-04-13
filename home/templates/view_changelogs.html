@@ -6,7 +6,9 @@
     {% if changelogs %}
         <ul class="list-group">
             {% for file in changelogs %}
-                <li class="list-group-item">{{ file.filename }}</li>
+                <li class="list-group-item">
+                    <a href="changelogs/download/{{ file.filename }}">{{ file.filename }}</a>
+                </li>
             {% endfor %}
         </ul>
     {% else %}

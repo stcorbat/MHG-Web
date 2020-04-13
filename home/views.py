@@ -1,5 +1,9 @@
+import os
+
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
+from django.http import HttpResponse, Http404
 
 from .models import Changelog, SoundDef
 from .forms import ChangelogForm, SoundDefForm
@@ -32,7 +36,8 @@ def view_changelogs(request):
 
     context = {
         'changelogs': Changelog.objects.filter(userid=request.user.id),
-        'form': form
+        'form': form,
+        'userid': request.user.id
     }
     return render(request, 'view_changelogs.html', context=context)
 
@@ -55,3 +60,16 @@ def view_sounddefs(request):
         'form': form
     }
     return render(request, 'view_sounddefs.html', context=context)
+
+
+# downloading files method taken from https://stackoverflow.com/questions/36392510/django-download-a-file
+# filetype designates if it's a changelog or sound def file
+def download(request, filename, filetype):
+    path = filetype + '/user_' + str(request.user.id) + '/' + filename
+    file_path = os.path.join(settings.MEDIA_ROOT, path)
+    if os.path.exists(file_path):
+        with open(file_path, 'rb') as fh:
+            response = HttpResponse(fh.read(), content_type='application/force-download')
+            response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
+            return response
+    return Http404
