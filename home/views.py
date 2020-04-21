@@ -1,11 +1,12 @@
 import os
+import secrets
 
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.http import HttpResponse, Http404
 
-from .models import Changelog, SoundDef
+from .models import Changelog, SoundDef, UserKey
 from .forms import ChangelogForm, SoundDefForm
 
 
@@ -62,6 +63,29 @@ def view_sounddefs(request):
         'form': form
     }
     return render(request, 'view_sounddefs.html', context=context)
+
+
+@login_required
+def key_generation(request):
+    if request.method == 'POST':
+        if not UserKey.objects.filter(username=request.user.username).exists():
+            # generates a random 16 bit hexadecimal key
+            key = secrets.token_hex(32)
+
+            userkey = UserKey()
+            userkey.username = request.user.username
+            userkey.key = key
+            userkey.save()
+        else:
+            userkey = UserKey.objects.get(username=request.user.username)
+
+        context = {
+            'key': userkey.key
+        }
+    else:
+        context = None
+
+    return render(request, 'key_generation.html', context=context)
 
 
 # downloading files method taken from https://stackoverflow.com/questions/36392510/django-download-a-file

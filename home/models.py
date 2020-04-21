@@ -25,3 +25,8 @@ class SoundDef(models.Model):
 
     def filename(self):
         return os.path.basename(self.file.name)
+
+
+class UserKey(models.Model):
+    username = models.CharField(max_length=30, unique=True)
+    key = models.CharField(max_length=32, unique=True)

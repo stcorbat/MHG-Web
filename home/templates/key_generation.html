@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block styles %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'key_generation.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <div class="page-title">Key Generation</div>
+
+    <p class="page-desc">
+        In order to store your files in the application to the cloud, you must generate a unique key
+        and put it in when prompted in the application.
+    </p>
+
+    <div class="alert alert-danger" id="key-warning">Do not share this key with anyone! It is our main way to identify you
+    from the application.</div>
+
+    {% if key %}
+        <div class="jumbotron" id="key-box">
+            {{ key }}
+        </div>
+    {% endif %}
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="submit" name="generate_key" id="id_generate_key" class="grad-button" value="Generate Key">
+    </form>
+
+</div>
+{% endblock %}

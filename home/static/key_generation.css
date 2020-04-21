@@ -1,0 +1,12 @@
+#key-box {
+    color: #34495e;
+    font-size: 2em;
+}
+
+#key-warning {
+    font-size: 2em;
+}
+
+#id_generate_key {
+    background-image: linear-gradient(60deg, #d63031, #ff7675 ,#d63031);
+}

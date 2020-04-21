@@ -17,6 +17,11 @@ a.grad-button, a.grad-button:hover {
     color: inherit;
 }
 
+input.grad-button, input.grad-button:hover {
+    border: 0;
+    color: inherit;
+}
+
 .grad-button {
     display: inline-block;
     margin: 0.5em;

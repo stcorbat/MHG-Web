@@ -7,6 +7,7 @@ urlpatterns = [
     path('about', views.about, name='about'),
     path('view_changelogs', views.view_changelogs, name='view_changelogs'),
     path('view_sounddefs', views.view_sounddefs, name='view_sounddefs'),
+    path('key_generation', views.key_generation, name='key_generation'),
     path('changelogs/download/<str:filename>', views.download, {'filetype': 'changelogs'}),
     path('sounddefs/download/<str:filename>', views.download, {'filetype': 'sound_defs'})
 ]
