@@ -27,10 +27,11 @@ def view_changelogs(request):
         form = ChangelogForm(request.POST, request.FILES)
 
         if form.is_valid():
-            # django does not allow models to be committed without all fields filled in, so don't commit it yet
-            changelog = form.save(commit=False)
+            changelog = Changelog()
+            changelog.file = request.FILES['changelog_file_input']
             changelog.userid = request.user.id
             changelog.save()
+
     else:
         form = ChangelogForm()
 
@@ -48,9 +49,10 @@ def view_sounddefs(request):
         form = SoundDefForm(request.POST, request.FILES)
 
         if form.is_valid():
-            soundDef = form.save(commit=False)
-            soundDef.userid = request.user.id
-            soundDef.save()
+            sounddef = SoundDef()
+            sounddef.file = request.FILES['sounddef_file_input']
+            sounddef.userid = request.user.id
+            sounddef.save()
 
     else:
         form = SoundDefForm()

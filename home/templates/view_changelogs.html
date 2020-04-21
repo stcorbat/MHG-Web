@@ -18,12 +18,15 @@
     <hr>
 
     <h2>Upload File</h2>
+    {% if form.changelog_file_input.errors %}
+        <div class="alert alert-danger">{{ form.changelog_file_input.errors.as_text }}</div>
+    {% endif %}
     <!-- the enctype must be set to this in order for request.FILES to be populated -->
     <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="custom-file" style="margin-bottom: 15px;">
-            <input type="file" name="file" class="custom-file-input" id="changelog-file-input">
-            <label for="changelog-file-input" class="custom-file-label">Choose file</label>
+            <input type="file" class="custom-file-input" required id="id_changelog_file_input" name="changelog_file_input">
+            <label for="id_changelog_file_input" class="custom-file-label">Choose file</label>
         </div>
         <input type="submit" value="Submit" class="btn btn-primary">
     </form>
@@ -35,7 +38,7 @@
     Taken from: https://stackoverflow.com/questions/48613992/bootstrap-4-file-input-doesnt-show-the-file-name
  -->
 <script>
-    $('#changelog-file-input').on('change', function() {
+    $('#id_changelog_file_input').on('change', function() {
         var fileName = $(this).val().replace('C:\\fakepath\\', "");
         $(this).next('.custom-file-label').html(fileName);
     })
