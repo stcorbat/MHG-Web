@@ -30,16 +30,16 @@ def view_changelogs(request):
         if form.is_valid():
             changelog = Changelog()
             changelog.file = request.FILES['changelog_file_input']
-            changelog.userid = request.user.id
+            changelog.username = request.user.username
             changelog.save()
 
     else:
         form = ChangelogForm()
 
     context = {
-        'changelogs': Changelog.objects.filter(userid=request.user.id),
+        'changelogs': Changelog.objects.filter(username=request.user.username),
         'form': form,
-        'userid': request.user.id
+        'username': request.user.username
     }
     return render(request, 'view_changelogs.html', context=context)
 
@@ -52,14 +52,14 @@ def view_sounddefs(request):
         if form.is_valid():
             sounddef = SoundDef()
             sounddef.file = request.FILES['sounddef_file_input']
-            sounddef.userid = request.user.id
+            sounddef.username = request.user.username
             sounddef.save()
 
     else:
         form = SoundDefForm()
 
     context = {
-        'sounddefs': SoundDef.objects.filter(userid=request.user.id),
+        'sounddefs': SoundDef.objects.filter(username=request.user.username),
         'form': form
     }
     return render(request, 'view_sounddefs.html', context=context)
@@ -91,7 +91,7 @@ def key_generation(request):
 # downloading files method taken from https://stackoverflow.com/questions/36392510/django-download-a-file
 # filetype designates if it's a changelog or sound def file
 def download(request, filename, filetype):
-    path = filetype + '/user_' + str(request.user.id) + '/' + filename
+    path = filetype + '/user_' + str(request.user.username) + '/' + filename
     file_path = os.path.join(settings.MEDIA_ROOT, path)
     if os.path.exists(file_path):
         with open(file_path, 'rb') as fh:
