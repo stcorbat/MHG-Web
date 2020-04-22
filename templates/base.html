@@ -10,6 +10,10 @@
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         {% endblock %}
 
+        <!-- The following is used for Google Sign In with OAuth 2.0 -->
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <meta name="google-signin-client_id" content="562157887661-orpna711ljh7lkc0r8m31ro62pdabejv.apps.googleusercontent.com">
+
         {% block title %}
             <title>My Hat Gone</title>
         {% endblock %}
@@ -30,11 +34,14 @@
                     <li class="nav-item">
                         <a href="about" class="nav-link">About</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="key_generation" class="nav-link">Key Generation</a>
+                    </li>
                 </ul>
                 <ul class="navbar-nav navbar-right">
                         {% if user.is_authenticated %}
                             <li class="nav-item">
-                                <a href="#" class="nav-link">Hi, {{ user.username }}!</a>
+                                <a href="#" class="nav-link">Hi, {{ user.username }}</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{% url 'logout' %}" class="btn btn-info">Logout</a>

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>View Changelogs</h1>
+    {% if changelogs %}
+        <ul class="list-group">
+            {% for file in changelogs %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="changelogs/download/{{ file.filename }}">{{ file.filename }}</a>
+                    <span class="badge badge-danger badge-pill">
+                        <a href="changelogs/delete/{{ file.filename }}" class="delete-badge">Delete</a>
+                    </span>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h1>No files found!</h1>
+    {% endif %}
+
+    <hr>
+
+    <h2>Upload File</h2>
+    {% if form.changelog_file_input.errors %}
+        <div class="alert alert-danger">{{ form.changelog_file_input.errors.as_text }}</div>
+    {% endif %}
+    <!-- the enctype must be set to this in order for request.FILES to be populated -->
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="custom-file" style="margin-bottom: 15px;">
+            <input type="file" class="custom-file-input" required id="id_changelog_file_input" name="changelog_file_input">
+            <label for="id_changelog_file_input" class="custom-file-label">Choose file</label>
+        </div>
+        <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
+
+</div>
+
+
+<!-- This is a small JS function to change the label of the file input when a file is selected
+    Taken from: https://stackoverflow.com/questions/48613992/bootstrap-4-file-input-doesnt-show-the-file-name
+ -->
+<script>
+    $('#id_changelog_file_input').on('change', function() {
+        var fileName = $(this).val().replace('C:\\fakepath\\', "");
+        $(this).next('.custom-file-label').html(fileName);
+    })
+</script>
+{% endblock %}
