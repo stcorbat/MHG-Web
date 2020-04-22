@@ -6,8 +6,11 @@
     {% if changelogs %}
         <ul class="list-group">
             {% for file in changelogs %}
-                <li class="list-group-item">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
                     <a href="changelogs/download/{{ file.filename }}">{{ file.filename }}</a>
+                    <span class="badge badge-danger badge-pill">
+                        <a href="changelogs/delete/{{ file.filename }}" class="delete-badge">Delete</a>
+                    </span>
                 </li>
             {% endfor %}
         </ul>

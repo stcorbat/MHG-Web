@@ -1,7 +1,7 @@
 import os
 import secrets
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.http import HttpResponse, Http404
@@ -99,3 +99,13 @@ def download(request, filename, filetype):
             response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
             return response
     return Http404
+
+
+def delete_file(request, filename, filetype):
+    path = filetype + '/user_' + str(request.user.username) + '/' + filename
+    if filetype == 'changelogs':
+        Changelog.objects.get(file=path).delete()
+        return redirect('view_changelogs')
+    elif filetype == 'sound_defs':
+        SoundDef.objects.get(file=path).delete()
+        return redirect('view_sounddefs')

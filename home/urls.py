@@ -9,5 +9,7 @@ urlpatterns = [
     path('view_sounddefs', views.view_sounddefs, name='view_sounddefs'),
     path('key_generation', views.key_generation, name='key_generation'),
     path('changelogs/download/<str:filename>', views.download, {'filetype': 'changelogs'}),
-    path('sounddefs/download/<str:filename>', views.download, {'filetype': 'sound_defs'})
+    path('sounddefs/download/<str:filename>', views.download, {'filetype': 'sound_defs'}),
+    path('changelogs/delete/<str:filename>', views.delete_file, {'filetype': 'changelogs'}),
+    path('sounddefs/delete/<str:filename>', views.delete_file, {'filetype': 'sound_defs'}),
 ]
