@@ -70,17 +70,17 @@ def key_generation(request):
     if request.method == 'POST':
         if not UserKey.objects.filter(username=request.user.username).exists():
             # generates a random 16 bit hexadecimal key
-            key = secrets.token_hex(32)
+            token = secrets.token_hex(32)
 
             userkey = UserKey()
             userkey.username = request.user.username
-            userkey.key = key
+            userkey.token = token
             userkey.save()
         else:
             userkey = UserKey.objects.get(username=request.user.username)
 
         context = {
-            'key': userkey.key
+            'key': userkey.token
         }
     else:
         context = None

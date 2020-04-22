@@ -29,4 +29,4 @@ class SoundDef(models.Model):
 
 class UserKey(models.Model):
     username = models.CharField(max_length=30, unique=True)
-    key = models.CharField(max_length=32, unique=True)
+    token = models.CharField(max_length=32, unique=True)
