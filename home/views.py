@@ -88,6 +88,10 @@ def key_generation(request):
     return render(request, 'key_generation.html', context=context)
 
 
+def help_page(request):
+    return render(request, 'help.html', context=None)
+
+
 # downloading files method taken from https://stackoverflow.com/questions/36392510/django-download-a-file
 # filetype designates if it's a changelog or sound def file
 def download(request, filename, filetype):

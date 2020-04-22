@@ -1,0 +1,35 @@
+img {
+    margin: 1em;
+}
+
+.section-text {
+    font-size: 1.3em;
+    margin-bottom: 0.5em;
+}
+
+/* Table of Contents stuff */
+#toc-box {
+    background-color: #f9f9f9;
+    border: 2px solid #4f4f4f;
+    padding: 1.7em;
+    display: table;
+    width: auto;
+    color: slategrey;
+}
+
+#toc-box ul, #toc-box li {
+    list-style: none;
+}
+
+#toc-box li a {
+    margin-left: 0.4em;
+}
+
+#toc-title {
+    font-weight: bold;
+    text-align: center;
+}
+
+#toc-topic {
+
+}

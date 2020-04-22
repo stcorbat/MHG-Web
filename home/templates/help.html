@@ -1,0 +1,395 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block styles %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static "help.css" %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <div class="page-title">Help</div>
+    <div class="page-desc">
+        Welcome to the help section. A user can use this screen in order to get an overview and better understanding
+        of the JSON Sound Definitions Editor application. There are various parts to the app that the user will need
+        to understand to achieve its full benefit. The screens and functions of buttons will be
+        described in detail below.
+    </div>
+
+    <div id="toc-box">
+        <div id="toc-title">Contents</div>
+        <ul>
+            <li>1 <a href="#home-screen">Home Screen</a></li>
+            <ul>
+                <li>1.1 <a href="#login">Login</a></li>
+                <li>1.2 <a href="#new-project">Create New Project</a></li>
+                <li>1.3 <a href="#load-project">Load/Import Project</a></li>
+                <li>1.4 <a href="#select-current-project">Select Current Project</a></li>
+            </ul>
+
+            <li>2 <a href="#view-project-screen">View Project Screen</a></li>
+            <ul>
+                <li>2.1 <a href="#playsounds">Playsounds, Edit Playsound, and Playsound Values</a></li>
+                <ul>
+                    <li>2.1.1 <a href="#template">Template</a></li>
+                    <li>2.1.2 <a href="#increment">Increment</a></li>
+                    <li>2.1.3 <a href="#name">Name</a></li>
+                    <li>2.1.4 <a href="#category">Category</a></li>
+                    <li>2.1.5 <a href="#min-distance">Min Distance</a></li>
+                    <li>2.1.6 <a href="#max-distance">Max Distance</a></li>
+                    <li>2.1.7<a href="#sounds">Sounds</a></li>
+                    <ul>
+                        <li>2.1.7a <a href="#directory">Directory</a></li>
+                        <li>2.1.7b <a href="#stream">Stream</a></li>
+                        <li>2.1.7c <a href="#volume">Volume</a></li>
+                        <li>2.1.7d <a href="#pitch">Pitch</a></li>
+                        <li>2.1.7e <a href="#low-memory-load">Low Memory Load</a></li>
+                    </ul>
+                </ul>
+
+                <li>2.2 <a href="#toolbar">Toolbar</a></li>
+                <ul>
+                    <li>2.2.1 <a href="#new">New</a></li>
+                    <li>2.2.2 <a href="#open">Open</a></li>
+                    <li>2.2.3 <a href="#open-recent">Open Recent</a></li>
+                    <li>2.2.4 <a href="#save">Save</a></li>
+                    <li>2.2.5 <a href=#save-as>Save As</a></li>
+                    <li>2.2.6 <a href="#import">Import</a></li>
+                    <li>2.2.6 <a href="#export">Export</a></li>
+                    <li>2.2.7 <a href="#edit-changelog">Edit Changelog</a></li>
+                    <li>2.2.8 <a href="#settings">Settings</a></li>
+                    <li>2.2.9 <a href="#quit">Quit</a></li>
+                    <li>2.2.10 <a href="#add-template">Add New Template</a></li>
+                    <li>2.2.11 <a href="#edit-template">Edit Template</a></li>
+                    <li>2.2.12 <a href="#add-playsound">Add Playsound</a></li>
+                    <li>2.2.13 <a href="#login">Log In/Log Out</a></li>
+                    <li>2.2.14 <a href="#help">Help</a></li>
+                </ul>
+            </ul>
+
+            <li>3 <a href="#settings-screen">Settings Screen</a></li>
+            <ul>
+                <li>3.1 <a href="#auto-save">Auto Save</a></li>
+                <li>3.2 <a href="#web-backups">Web Backups</a></li>
+            </ul>
+
+        </ul>
+    </div>
+
+    <hr>
+
+    <h1 id="home-screen">Home Screen</h1>
+    <div class="section-text">
+        The Home Screen is a small introduction to a user that plans to use the JSON Sound Definitions Editor.
+        It allows a user to access login for the application, create a new project, or select to open a recent project.
+    </div>
+    <img src="{% static "help_images/home_screen.png" %}" alt="Home Screen">
+
+    <h1 id="login">Login</h1>
+    <div class="section-text">
+        When a user opens the application, they are encouraged to log in. The Login Screen can be accessed by
+        selecting the text “Login with Google”. Once a user has completed filling in their credentials into Google
+        OAuth, they are taken back to the Home Screen. They can now backup their saves on our website.
+    </div>
+    <img src="{% static "help_images/login.jpg" %}" alt="Login Button">
+
+    <h1 id="new-project">Create New Project</h1>
+    <div class="section-text">
+        A user can create a new project at the Home Screen. This is done by selecting the button containing a plus
+        symbol that is located in the bottom right corner of the screen. This will send the user to the View Project
+        Screen, where they are able to work on their new project.
+    </div>
+    <img src="{% static "help_images/new_project.png" %}" alt="">
+
+    <h1 id="load-project">Load/Import Project</h1>
+    <div class="section-text">
+        If a user has a JSON Sound Definitions File ready to import to the editor, then they can select the button
+        containing a folder symbol that is located in the bottom left corner of the screen. This will prompt the user
+        to select a JSON file from their local machine. Once a file is selected, it will import the information from
+        the file into a new project. The user will then be sent to the View Project Screen, where they are able to
+        work on their imported project.
+    </div>
+    <img src="{% static "help_images/load_project.png" %}" alt="">
+
+    <h1 id="select-current-project">Select Current Project</h1>
+    <div class="section-text">
+        A user can also access the 5 most recent projects they have been working on by selecting one of the 5 buttons
+        located between the Load Project and Create New Project buttons at the bottom of the screen.
+    </div>
+
+    <hr>
+
+    <h1 id="view-project-screen">View Project Screen</h1>
+    <div class="section-text">
+        The View Project Screen allows the user to edit their JSON Sound Definitions File. The user has access to all
+        the Playsounds of the Sound Definitions File. They are also able to utilize a Toolbar that gives access
+        to helpful functions.
+    </div>
+    <img src="{% static "help_images/view_project.png" %}" alt="">
+
+    <h1 id="playsounds">Playsounds, Edit Playsound, and Playsound Values</h1>
+    <div class="section-text">
+        A Playsound is the main entity or object within the Sound Definitions File. It contains all the values that
+        will be manipulated in the editor by a user. A user can view and edit a Playsound (or playsound group) and
+        its values under Edit Playsound on the View Project Screen. However, there are usually multiple Playsounds
+        within one Sound Definitions File. A user can access all Playsounds at the left of the screen under Playsounds.
+        Once the Playsounds tab is selected (left click for a single playsound, or right click for a playsound group),
+        it will show all the Playsounds that are in the Sound Definitions File. A user can then select one of the
+        Playsounds (or a group of playsounds) to view and edit its values under Edit Playsound. The Playsound values
+        are described in more detail below. <br><br>
+
+        <b>Important Notes:</b><br>
+
+        Save Button: If a user has made changes to the Playsound values, then they must press the Save Button at the
+        bottom of the screen in order to save those changes. <br>
+
+        Cancel Button: If a user has made changes to the Playsound but does not wish to save the changes, then they
+        must press the Cancel Button at the bottom of the screen. <br>
+
+        Delete Button: If a user wants to delete a Playsound, then they must press the Delete Button at the bottom
+        of the screen. <br>
+    </div>
+    <img src="{% static "help_images/playounds.png" %}" alt="">
+
+    <h1 id="template">Template</h1>
+    <div class="section-text">
+        A user can select a template that they created to auto-fill all the Playsound values. If specific values
+        are used repeatedly in multiple Playsounds, then this should speed up the pace it takes to fill in each value.
+    </div>
+
+    <h1 id="increment">Increment</h1>
+    <div class="section-text">
+        An increment greater than one will create a group of Playsounds. This will correlate to multiple Playsounds
+        that increment up to the number specified. For example, a Playsound name may be cat and it will be able to
+        increment up to number <i>N</i> as follows: <i>cat1, cat2, … , catN</i>. The correlated sound file path
+        may be specified as <i>cat/idle1, cat/idle2, … , cat/idleN</i>.
+    </div>
+
+    <h1 id="name">Name</h1>
+    <div class="section-text">
+        This Playsound value is the name of the Playsound. It is a string or word that a user will input into the
+        Name textbox. The name of the Playsound will appear under the Playsound tab, so a user can locate the
+        Playsound. The name is needed for the JSON Sound Definitions File to be a valid file.
+    </div>
+
+    <h1 id="category">Category</h1>
+    <div class="section-text">
+        This Playsound value puts the Playsound into a category. A user is able to select a category with the
+        category tab. The most common categories are ui or master.
+    </div>
+
+    <h1 id="min-distance">Min Distance</h1>
+    <div class="section-text">
+        This Playsound value is the minimum distance that the sound can be heard. A user will be prompted to input
+        a numeric value into the Min Distance textbox. The default value is 1.0.
+    </div>
+
+    <h1 id="max-distance">Max Distance</h1>
+    <div class="section-text">
+        This Playsound value is the maximum distance that the sound can be heard. A user will be prompted to input
+        a numeric value into the Max Distance textbox. The default value is 1.0.
+    </div>
+
+    <h1 id="sounds">Sounds</h1>
+    <div class="section-text">
+        The sounds area correlates to a sound file in the resource pack. There can be multiple sounds in the Sounds
+        section. A user can add a sound by selecting the button with the gray circle and plus symbol. This will expand
+        the sounds section to hold references to more sounds.
+    </div>
+
+    <h1 id="directory">Directory</h1>
+    <div class="section-text">
+        This  is the file path to a .ogg sound file, relative to the sounds folder within the resource pack and omits
+        the .ogg file extension.  The directory is needed for the JSON Sound Definitions File to be a valid file.
+    </div>
+
+    <h1 id="stream">Stream</h1>
+    <div class="section-text">
+        This setting determines whether the sound should be streamed when it is played in-game or not.
+        This should be set to true for large or lengthy sound files.
+    </div>
+
+    <h1 id="volume">Volume</h1>
+    <div class="section-text">
+        This sound value is the relative measure of a sound. A user will be prompted to input a numeric value
+        into the Volume textbox.
+    </div>
+
+    <h1 id="pitch">Pitch</h1>
+    <div class="section-text">
+        This sound value manipulates the pitch of the sound file when played, with no manipulation being set as 1.
+        The minimum pitch is zero. A user will be prompted to input a numeric value into the Pitch textbox.
+    </div>
+
+    <h1 id="low-memory-load">Low Memory Load</h1>
+    <div class="section-text">
+        This setting tells the game whether it should attempt to load the sound when the device has low memory.
+        If this is an unnecessary sound, then this should be set to false.
+    </div>
+
+    <hr>
+
+    <h1 id="toolbar">Toolbar</h1>
+    <div class="section-text">
+        The Toolbar is located at the top of the screen. It gives the user access to functions that are used to
+        open, update, and save a file. The functions are run by selecting a button with the function name.
+        The function buttons can be found either under the File and Template tabs in the top left of the Toolbar
+        or directly on the Toolbar. A detailed description of each function button as well as its location on the
+        Toolbar is below.
+    </div>
+    <img src="{% static "help_images/toolbar.png" %}" alt="">
+
+    <h1 id="new">New</h1>
+    <div class="section-text">
+        This function can be found under the File tab in the top left of the Toolbar. This function creates a new
+        project. If a user is working on their current project and it has not been saved when they create the new
+        project, then they will be asked if they want to save their current project before viewing the new project.
+    </div>
+    <img src="{% static "help_images/new.jpg" %}" alt="">
+
+    <h1 id="open">Open</h1>
+    <div class="section-text">
+        This function can be found under the File tab in the top left of the Toolbar. This function allows a user to
+        open a saved project. A user must find the project on their local machine to open it. If a user is working on
+        their current project and it has not been saved when they open their other project, then they will be asked
+        if they want to save their current project before opening their other project.
+    </div>
+    <img src="{% static "help_images/open.jpg" %}" alt="">
+
+    <h1 id="open-recent">Open Recent</h1>
+    <div class="section-text">
+        This function can be found under the File tab in the top left of the Toolbar. This function allows a user to
+        open a recently saved project. A user can choose from a list of their 5 most recent projects. If a user is
+        working on their current project and it has not been saved when they open their other project, then they
+        will be asked if they want to save their current project before viewing their other project.
+    </div>
+    <img src="{% static "help_images/open_recent.jpg" %}" alt="">
+
+    <h1 id="save">Save</h1>
+    <div class="section-text">
+        This function can be found under the File tab in the top left of the Toolbar and directly on the Toolbar.
+        This function saves the project and any changes to the project. It also saves all changes made to a
+        changelog. If a user saves a new project that has not been saved before, then the save as function
+        is called instead.
+    </div>
+    <img src="{% static "help_images/save.jpg" %}" alt="">
+    <img src="{% static "help_images/save2.jpg" %}" alt="">
+
+    <h1 id="save-as">Save As</h1>
+    <div class="section-text">
+        This function can be found under the File tab in the top left of the Toolbar.
+        This function allows a user to save their project to a new location on their local machine.
+    </div>
+    <img src="{% static "help_images/save_as.jpg" %}" alt="">
+
+    <h1 id="import">Import</h1>
+    <div class="section-text">
+        This function can be found under the File tab in the top left of the Toolbar and directly on the Toolbar.
+        This function essentially is the open function. It allows a user to open a saved project. A user must find
+        the project on their local machine to open it. If a user is working on their current project and it has not
+        been saved when they open their other project, then they will be asked if they want to save their current
+        project before opening their other project.
+    </div>
+    <img src="{% static "help_images/import.jpg" %}" alt="">
+
+    <h1 id="export">Export</h1>
+    <div class="section-text">
+        This function can be found under the File tab in the top left of the Toolbar and directly on the Toolbar.
+        This function allows a user to export their current project as a JSON Sound Definitions File
+        (and the associated changelog) to a location on their local machine. If the project is already saved,
+        it will open the saves directory.
+    </div>
+    <img src="{% static "help_images/export.jpg" %}" alt="">
+    <img src="{% static "help_images/export2.jpg" %}" alt="">
+
+    <h1 id="edit-changelog">Edit Changelog</h1>
+    <div class="section-text">
+        This function can be found under the File tab in the top left of the Toolbar and directly on the Toolbar.
+        The changelog keeps a record of the changes made to a particular project. This function allows a user
+        to access and modify the changelog.
+    </div>
+    <img src="{% static "help_images/edit_changelog.jpg" %}" alt="">
+    <img src="{% static "help_images/edit_changelog2.jpg" %}" alt="">
+
+    <h1 id="settings">Settings</h1>
+    <div class="section-text">
+        This function can be found under the File tab in the top left of the Toolbar and directly on the Toolbar.
+        This function allows a user access to access the Settings Screen
+    </div>
+    <img src="{% static "help_images/settings.jpg" %}" alt="">
+    <img src="{% static "help_images/settings2.jpg" %}" alt="">
+
+    <h1 id="quit">Quit</h1>
+    <div class="section-text">
+        This function can be found under the File tab in the top left of the Toolbar. This function allows a user
+        to stop running the JSON Sound Definitions Editor. The application will close. If a user has not saved their
+        current project, then they will be asked if they want to save their current project before closing
+        the application.
+    </div>
+    <img src="{% static "help_images/quit.jpg" %}" alt="">
+
+    <h1 id="add-template">Add New Template</h1>
+    <div class="section-text">
+        This function shows the template screen where a user can create a new template. They set default values for
+        Playsounds and Sounds which can be called when creating or editing a Playsound.
+    </div>
+    <img src="{% static "help_images/add_template.jpg" %}" alt="">
+    <img src="{% static "help_images/add_template2.jpg" %}" alt="">
+
+    <h1 id="edit-template">Edit Template</h1>
+    <div class="section-text">
+        This function shows the edit template screen where a user can modify or delete an existing template.
+    </div>
+    <img src="{% static "help_images/edit_template.jpg" %}" alt="">
+    <img src="{% static "help_images/edit_template2.jpg" %}" alt="">
+
+    <h1 id="add-playsound">Add Playsound</h1>
+    <div class="section-text">
+        This function can be found directly on the Toolbar. This function allows a user to create a new Playsound
+        in the current project. The new Playsound with empty values is shown to the user under Edit Playsound on the
+        View Project Screen. If a user is working on their current Playsound and it has not been saved when they
+        create the new Playsound, then they will be asked if they want to save the current Playsound before viewing
+        the new Playsound.
+    </div>
+    <img src="{% static "help_images/add_playsound.jpg" %}" alt="">
+
+    <h1 id="login">Log In/Log Out</h1>
+    <div class="section-text">
+        This function can be found directly on the Toolbar. This function allows a user to log in or log out of their
+        account associated with the application. If a user is logged out, then the function button displays log in.
+        By selecting log in, a user will be sent to the login screen. If a user is logged in, then the function
+        button displays log out. By selecting log out, a user will be logged out of their account.
+    </div>
+    <img src="{% static "help_images/login2.jpg" %}" alt="">
+
+    <h1 id="help">Help</h1>
+    <div class="section-text">
+        This function can be found directly on the Toolbar. This function allows a user to view information about the
+        JSON Sound Definitions Editor application by sending them to the Help Screen.
+    </div>
+    <img src="{% static "help_images/help2.jpg" %}" alt="">
+
+    <hr>
+
+    <h1 id="settings-screen">Settings Screen</h1>
+    <div class="section-text">
+        The Settings Screen contains special functions that affect the functionality of the application. Once a
+        settings function is selected or changed, the app will run with that change from that point forward. The
+        settings functions and default selections will be described below.
+    </div>
+    <img src="{% static "help_images/settings2.png" %}" alt="">
+
+    <h1 id="auto-save">Auto Save</h1>
+    <div class="section-text">
+        This function allows the application to automatically save any changes to the current project. A user is able
+        to turn this function on or off. This function is defaulted to on.
+    </div>
+
+    <h1 id="web-backups">Web Backups</h1>
+    <div class="section-text">
+        This function allows the application to save a backup of the current project to a web database.
+    </div>
+
+</div>
+{% endblock %}
